@@ -1,6 +1,6 @@
 class ScribblesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_scribble, only: [:edit, :show, :update]
+  before_action :set_scribble, only: [:edit, :show, :update, :destroy]
 
   def index
     @scribbles = Scribble.all
@@ -39,6 +39,20 @@ class ScribblesController < ApplicationController
         format.html { redirect_to @scribble, notice: "You changed that scribble."}
       else
         format.html { render :edit }
+      end
+    end
+  end
+
+  def destroy  
+    # set_scribble before action gets it --get the scribble we want to destroy
+    # smash it
+    @scribble.destroy
+    # render the index view
+    respond_to do |format| 
+      if @scribble.destroy
+        format.html { redirect_to scribbles_url, notice: 'Scribble deleted successfully.' }
+      else
+        format.html { render :index, notice: "Something went wrong.  Your scribble still exists.  You can try again." }
       end
     end
   end
