@@ -4,6 +4,8 @@ class ScribblesController < ApplicationController
   end
 
   def show
+    @scribble = Scribble.find(params[:id])
+    # model gets you what you need ^ capitalized one is from model
   end
 
   def new

@@ -1,2 +1,24 @@
-<h1>Scribbles#show</h1>
-<p>Find me in app/views/scribbles/show.html.erb</p>
+<p id="notice"><%= notice %></p>
+
+<!-- Scribble -->
+  
+  <!-- @username -->
+  <p>
+    <strong>User: </strong><%= @scribble.user.username %>
+  </p>
+  
+  <!-- message -->
+  <p>
+    <strong>Message: </strong><%= @scribble.message %>
+  </p>
+
+  <!-- when it was scribbled -->
+  <p>
+    <strong>Tweeted at </strong> <%= @scribble.created_at %>
+  </p>
+
+  <!-- Button to Edit the scribble -->
+  <%= link_to 'Edit', edit_scribble_path(@scribble), class: 'btn btn-sm btn-default' %>
+
+  <!-- Button to the index -->
+  <%= link_to 'Back to Feed', scribbles_path %>
