@@ -1,2 +1,10 @@
-<h1>Scribbles#new</h1>
-<p>Find me in app/views/scribbles/new.html.erb</p>
+<h1 class="text-center">New Scribble</h1>
+
+
+<%= render 'form' %>
+<!-- Back to index button -->
+
+
+<%= link_to 'Back to Feed', scribbles_path, class: 'btn btn-sm btn-success' %>
+
+
