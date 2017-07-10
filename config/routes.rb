@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
-  resources :chits
+
+  get 'scribbles/index'
+
+  get 'scribbles/show'
+
+  get 'scribbles/new'
+
+  get 'scribbles/edit'
 
   devise_for :users
 

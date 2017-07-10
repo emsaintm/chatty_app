@@ -1,14 +1,10 @@
-require 'test_helper'
-
-class ChitTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+class Scribble < ApplicationRecord
+  belongs_to :user
 end
 
 # == Schema Information
 #
-# Table name: chits
+# Table name: scribbles
 #
 #  id         :integer          not null, primary key
 #  message    :string
@@ -18,5 +14,5 @@ end
 #
 # Indexes
 #
-#  index_chits_on_user_id  (user_id)
+#  index_scribbles_on_user_id  (user_id)
 #

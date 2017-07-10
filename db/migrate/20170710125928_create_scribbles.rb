@@ -1,6 +1,6 @@
-class CreateChits < ActiveRecord::Migration[5.1]
+class CreateScribbles < ActiveRecord::Migration[5.1]
   def change
-    create_table :chits do |t|
+    create_table :scribbles do |t|
       t.string :message
       t.references :user, foreign_key: true
 

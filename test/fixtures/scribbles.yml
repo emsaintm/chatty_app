@@ -10,7 +10,7 @@ two:
 
 # == Schema Information
 #
-# Table name: chits
+# Table name: scribbles
 #
 #  id         :integer          not null, primary key
 #  message    :string
@@ -20,5 +20,5 @@ two:
 #
 # Indexes
 #
-#  index_chits_on_user_id  (user_id)
+#  index_scribbles_on_user_id  (user_id)
 #
