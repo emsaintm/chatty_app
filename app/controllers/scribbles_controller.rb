@@ -1,4 +1,6 @@
 class ScribblesController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @scribbles = Scribble.all
   end

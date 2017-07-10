@@ -1,2 +1,34 @@
-<h1>Scribbles#index</h1>
-<p>Find me in app/views/scribbles/index.html.erb</p>
+<p id="notice"><%= notice %></p>
+
+<!-- Make new scribble btn -->
+<%= link_to 'New Tweet', new_scribble_path, class: 'btn btn-md btn-success' %>
+
+
+<!-- See all the scribbles in a table -->
+<table class="table table-striped table-hover">
+  <!-- Head -->
+  <thead>
+    <tr>
+      <th>Message</th>
+      <th>Username</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  
+  <!-- Body -->
+  <tbody>
+    <!-- iterate through the scribbles, each one in a new row -->
+    <% @scribbles.each do |scribble| %>
+      <tr>
+        <td><%= scribble.message %></td>
+        <td><%= scribble.user.username %></td>
+        <td><%= link_to 'Show', scribble %></td>
+        <td><%= link_to 'Edit', edit_scribble_path(scribble) %></td>
+        <td><%= link_to 'Destroy', scribble, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+
+
+</table>
+
