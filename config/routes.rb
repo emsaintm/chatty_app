@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :scribbles
+  resources :relationships
 
   root 'scribbles#index'
 
