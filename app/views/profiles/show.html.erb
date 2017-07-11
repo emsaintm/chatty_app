@@ -1,11 +1,57 @@
+<div class="container-fluid"></div>
+<div class="row">
+  <!-- Profile box -->
+  <div class"col-sm-4" >
+  <!-- User profile info -->
+    <h3><%= @user.name %></h3>
+    <h5><%= @user.username %></h5>
+    <h5><p><%= @user.bio %></p></h5>
+    <h5><%= @user.location %></h5>
+    <h5>Joined <%= @user.created_at.strftime("%B %Y") %></h5>
+    <!-- strftime means stringify time - built in ruby method like stamp -->
+  <!-- List of people they're following -->
+
+    <%= @user.relationships.count %> Following
+    <br>
+    <% @user.relationships.each do |relationship| %>
+      <%= link_to relationship.friend.name, profile_path(relationship.friend) %>
+      <br>
+
+    <% end %>
+
+    <br><br>
+
+  <!-- List of all their followers -->
+    <%= pluralize(@user.inverse_relationships.count, 'Follower') %>
+    <br>
+    <% @user.inverse_friends.each do |friend| %>
+      <%= link_to friend.name, profile_path(friend) %>
+      <br>
+    <% end %>
 
 
-<!-- Username -->
-<h1><%= @user.username %>'s Profile </h1>
+  </div>
 
-<% @user.scribbles.each do |scribble| %>
-  <%= scribble.message %> <br>
-<% end %>
+  <!-- All Your Scribbles box -->
+  <div class="col-sm-7">
+    <div class="panel panel-default">
+      <% @user.scribbles.each do |scribble| %>
+        <div class="panel-body">
+          <strong><%= scribble.user.username %> </strong><small> scribbled <%= time_ago_in_words(scribble.created_at) %> ago</small>
+
+          <br><br>
+
+          <%= scribble.message %>
+
+        </div>
+      <% end %>
+    </div>
+  
+  </div>
+
+</div>
+
+<!-- Follow / Unfollow Button -->
 
 
 <!-- Only show this stuff if it's not the current user's profile -->
