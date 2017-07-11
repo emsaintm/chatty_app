@@ -4,3 +4,6 @@
 <% @user.scribbles.each do |scribble| %>
   <%= scribble.message %> <br>
 <% end %>
+
+
+<%= link_to "Follow", relationships_path(friend_id: @user.id), method: :post %>
