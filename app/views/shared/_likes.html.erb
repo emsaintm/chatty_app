@@ -1,0 +1,20 @@
+<!-- if we already like it we wanna see an unlike button, if we havne't liked it, we want to see like. -->
+<% if current_user.likes?(@scribble) %>
+  <%= link_to 'Unlike', scribble_likes_path(@scribble), method: :delete, class: 'btn btn-sm btn-default' %>
+<% else %>
+  <%= link_to 'Like', scribble_likes_path(@scribble), method: :post, class: 'btn btn-sm btn-info' %>
+<% end %>
+
+
+<%= pluralize(@scribble.likes.count), 'Like') %>
+
+<br><br>
+
+<!-- TODO add if statement to hide if no one likes this -->
+
+Liked by:
+<% @scribble.likes.each do |like| %>
+  <br>
+  <%= like.user.username %>
+  <br>
+<% end %>

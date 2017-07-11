@@ -17,6 +17,10 @@
     <strong>Tweeted at </strong> <%= @scribble.created_at %>
   </p>
 
+
+  <%= render 'shared/likes' %>
+  <br><br>
+
   <!-- Button to Edit the scribble -->
   <%= link_to 'Edit', edit_scribble_path(@scribble), class: 'btn btn-sm btn-default' %>
 
