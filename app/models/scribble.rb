@@ -1,5 +1,6 @@
 class Scribble < ApplicationRecord
   belongs_to :user
+  has_many :likes
 
   # Validations
   # * no blank tweets
