@@ -13,8 +13,15 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :scribbles
+  resources :scribbles do
+    resource :likes, only: [:create, :destroy]
+    # resource singular for likes bc we don't need an index view and itll singularize our route
+  end
+
+
+
   resources :relationships
+  
 
   root 'scribbles#index'
 

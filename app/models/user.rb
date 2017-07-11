@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :scribbles
+  has_many :likes
 
    # ~ Person who follows (current user)
   has_many :relationships
@@ -17,6 +18,10 @@ class User < ApplicationRecord
   # * username has to be unique
   validates :name, presence: true
   validates :username, presence: true, uniqueness: true
+
+  def likes?(scribble)
+    scribble.likes.where(user_id: id).any?  
+  end
 end
 
 # == Schema Information
